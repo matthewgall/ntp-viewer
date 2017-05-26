@@ -6,5 +6,12 @@
 
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		setInterval(function(){
+			$("#timestamp").load('/api/time')
+		}, 2000);
+	});
+</script>
 </body>
 </html>

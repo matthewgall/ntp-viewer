@@ -3,16 +3,23 @@
 import sys, os, logging, json, ntplib
 from bottle import route, request, response, redirect, hook, error, default_app, view, static_file, template, HTTPError
 from time import ctime
+from pprint import pprint
+
+def fetch_time():
+	c = ntplib.NTPClient()
+	return c.request(os.getenv('APP_SERVER', 'localhost'), version=3)
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
 	return static_file(filepath, root='views/static')
 
+@route('/api/time')
+def get_time():
+	return ctime(fetch_time().tx_time)
+
 @route('/')
 def index():
-	c = ntplib.NTPClient()
-	response = c.request(os.getenv('APP_SERVER', 'localhost'), version=3)
-	return template("index", response=response)
+	return template("index", response=fetch_time())
 
 if __name__ == '__main__':
 	app = default_app()

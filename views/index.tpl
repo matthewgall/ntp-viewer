@@ -8,7 +8,7 @@
             <div class="panel-heading">
                 <h2 class="panel-title">Current Time</h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" id="timestamp">
                 {{ctime(response.tx_time)}}
             </div>
         </div>
@@ -18,7 +18,18 @@
                 <h2 class="panel-title">Debug Information</h3>
             </div>
             <div class="panel-body">
-                {{response.offset}}
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Stratum:</strong> {{response.stratum}}<br />
+                        <strong>Version:</strong> {{response.version}}<br />
+                        <strong>Mode:</strong> {{response.mode}}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Offset:</strong> {{response.offset}}<br />
+                        <strong>Delay:</strong> {{response.delay}}<br />
+                        <strong>Precision:</strong> {{response.precision}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
