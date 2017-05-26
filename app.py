@@ -12,7 +12,7 @@ def server_static(filepath):
 def index():
 	c = ntplib.NTPClient()
 	response = c.request(os.getenv('APP_SERVER', 'localhost'), version=3)
-	return "{}<br/>{}".format(ctime(response.tx_time), response.offset)
+	return template("index", response=response)
 
 if __name__ == '__main__':
 	app = default_app()
