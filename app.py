@@ -3,7 +3,6 @@
 import sys, os, logging, json, ntplib
 from bottle import route, request, response, redirect, hook, error, default_app, view, static_file, template, HTTPError
 from time import ctime
-from pprint import pprint
 
 def fetch_time():
 	c = ntplib.NTPClient()
