@@ -12,9 +12,14 @@ def fetch_time():
 def server_static(filepath):
 	return static_file(filepath, root='views/static')
 
-@route('/api/time')
-def get_time():
-	return "{} UTC".format(ctime(fetch_time().tx_time))
+@route('/api/update')
+def get_delay():
+	response = {
+		"timestamp": "{} UTC".format(ctime(fetch_time().tx_time)),
+		"offset": "{}s".format(format(fetch_time().offset, '.15f')),
+		"delay": "{}s".format(format(fetch_time().delay, '.15f'))
+	}
+	return json.dumps(response)
 
 @route('/')
 def index():

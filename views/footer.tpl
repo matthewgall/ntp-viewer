@@ -9,8 +9,13 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		setInterval(function(){
-			$("#timestamp").load('/api/time')
-		}, 2000);
+			$.getJSON( "/api/update", function( data ) {
+				$.each( data, function( key, val ) {
+					console.log("Updating #" + key + " to:" + val )
+					$("#" + key).text(val);
+				});
+			});
+		}, 10000);
 	});
 </script>
 </body>
