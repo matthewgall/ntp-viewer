@@ -29,8 +29,8 @@
                         <strong>Mode:</strong> {{response.mode}}
                     </div>
                     <div class="col-md-6">
-                        <strong>Offset:</strong> {{response.offset}}<br />
-                        <strong>Delay:</strong> {{response.delay}}<br />
+                        <strong>Offset:</strong> {{format(response.offset, '.15f')}}s<br />
+                        <strong>Delay:</strong> {{format(response.delay, '.15f')}}s<br />
                         <strong>Precision:</strong> {{response.precision}}
                     </div>
                 </div>
