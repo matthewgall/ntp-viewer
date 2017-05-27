@@ -14,7 +14,7 @@ def server_static(filepath):
 
 @route('/api/time')
 def get_time():
-	return ctime(fetch_time().tx_time)
+	return "{} UTC".format(ctime(fetch_time().tx_time))
 
 @route('/')
 def index():

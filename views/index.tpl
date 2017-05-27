@@ -9,7 +9,7 @@
                 <h2 class="panel-title">Current Time</h3>
             </div>
             <div class="panel-body" id="timestamp">
-                {{ctime(response.tx_time)}}
+                {{ctime(response.tx_time)}} UTC
             </div>
         </div>
 
