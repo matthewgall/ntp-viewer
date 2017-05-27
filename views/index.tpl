@@ -3,7 +3,11 @@
 <div class="container">
     <div class="starter-template">
         <h1>Welcome to ntp-viewer</h1>
+        <p class="lead">
+            Running on {{host}}
+        </p>
         <p>&nbsp;</p>
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h2 class="panel-title">Current Time</h3>

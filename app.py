@@ -18,7 +18,7 @@ def get_time():
 
 @route('/')
 def index():
-	return template("index", response=fetch_time())
+	return template("index", host=os.getenv('APP_SERVER', 'localhost'), response=fetch_time())
 
 if __name__ == '__main__':
 	app = default_app()
