@@ -11,7 +11,7 @@
 		setInterval(function(){
 			$.getJSON( "/api/update", function( data ) {
 				$.each( data, function( key, val ) {
-					console.log("Updating #" + key + " to:" + val )
+					console.log("Updating #" + key + " to: " + val )
 					$("#" + key).text(val);
 				});
 			});
