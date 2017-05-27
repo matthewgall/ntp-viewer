@@ -12,7 +12,7 @@ RUN apk add --update \
 	py-pip \
 	py-virtualenv \
 	&& rm -rf /var/cache/apk/* \
-	&& virtualenv /env \
+	&& virtualenv -p python3 /env \
 	&& /env/bin/pip install -r /app/requirements.txt
 
 EXPOSE 5000
