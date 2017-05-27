@@ -34,6 +34,7 @@
                         <p><strong>Precision:</strong>{{response.precision}}</p>
                     </div>
                 </div>
+                <small>Data is refreshed every 10 seconds</small>
             </div>
         </div>
     </div>
