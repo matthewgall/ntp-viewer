@@ -5,12 +5,20 @@ from bottle import route, request, response, redirect, hook, error, default_app,
 from time import ctime
 
 def fetch_time():
-	c = ntplib.NTPClient()
-	return c.request(os.getenv('APP_SERVER', 'localhost'), version=3)
+	try:
+		c = ntplib.NTPClient()
+		return c.request(os.getenv('APP_SERVER', 'localhost'), version=3)
+	except NTPException:
+		return False
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
 	return static_file(filepath, root='views/static')
+
+@route('/favicon.ico')
+def static_favicon():
+	response.content_type = 'image/x-icon'
+	return static_file("favicon.ico", root='views/static')
 
 @route('/api/update')
 def get_delay():

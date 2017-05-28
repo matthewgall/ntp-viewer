@@ -8,6 +8,10 @@
 <title>ntp | viewer</title>
 
 <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+
 <style type="text/css">
 body {
     padding-top: 50px;

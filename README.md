@@ -15,7 +15,11 @@ Honestly, that simple (and none of that one line wget direct to your terminal)
 ## Demo
 We've deployed a simple demo of the capability over on our demo site, which you can [click here](https://ntp.londinium.ninja/) to view!
 
-## Licence
+## Icon License
+
+Clock Icon by [Icons8](https://icons8.com) and released under a [Creative Commons Attribution-No Derivative Works 3.0 Unported license](http://creativecommons.org/licenses/by-nd/3.0/)
+
+## License
 
     The MIT License (MIT)
 
