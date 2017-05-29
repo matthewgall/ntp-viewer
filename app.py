@@ -22,12 +22,13 @@ def static_favicon():
 
 @route('/api/update')
 def get_delay():
-	response = {
+	data = {
 		"timestamp": "{} UTC".format(ctime(fetch_time().tx_time)),
 		"offset": "{}s".format(format(fetch_time().offset, '.15f')),
 		"delay": "{}s".format(format(fetch_time().delay, '.15f'))
 	}
-	return json.dumps(response)
+	response.content_type = 'application/json'
+	return json.dumps(data)
 
 @route('/')
 def index():
