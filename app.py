@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, os, logging, json, ntplib
+import sys, os, logging, json, ntplib, argparse
 from bottle import route, request, response, redirect, hook, error, default_app, view, static_file, template, HTTPError
 from time import ctime
 
@@ -35,20 +35,25 @@ def index():
 	return template("index", host=os.getenv('APP_SERVER', 'localhost'), response=fetch_time())
 
 if __name__ == '__main__':
-	app = default_app()
 
-	serverHost = os.getenv('IP', 'localhost')
-	serverPort = os.getenv('PORT', '5000')
+	parser = argparse.ArgumentParser()
 
-	# Now we're ready, so start the server
-	# Instantiate the logger
-	log = logging.getLogger('log')
-	console = logging.StreamHandler()
-	log.setLevel(logging.INFO)
-	log.addHandler(console)
+	# Server settings
+	parser.add_argument("-i", "--host", default=os.getenv('IP', '127.0.0.1'), help="IP Address")
+	parser.add_argument("-p", "--port", default=os.getenv('PORT', 5000), help="Port")
 
-	# Now we're ready, so start the server
+	# Verbose mode
+	parser.add_argument("--verbose", "-v", help="increase output verbosity", action="store_true")
+	args = parser.parse_args()
+
+	if args.verbose:
+		logging.basicConfig(level=logging.DEBUG)
+	else:
+		logging.basicConfig(level=logging.INFO)
+	log = logging.getLogger(__name__)
+
 	try:
-		app.run(host=serverHost, port=serverPort, server='tornado')
+		app = default_app()
+		app.run(host=args.host, port=args.port, server='tornado')
 	except:
-		log.error("Failed to start application server")
+		log.error("Unable to start server on {}:{}".format(args.host, args.port))
