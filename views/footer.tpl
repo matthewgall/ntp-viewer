@@ -9,7 +9,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		setInterval(function(){
-			$.getJSON( "/api/update", function( data ) {
+			$.getJSON( "/api", function( data ) {
 				$.each( data, function( key, val ) {
 					console.log("Updating #" + key + " to: " + val )
 					$("#" + key).text(val);

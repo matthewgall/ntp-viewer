@@ -23,7 +23,7 @@ def enable_cors(fn):
 
 def embed_date(fn):
 	def _embed_date(*args, **kwargs):
-		response.set_header('Date', time.strftime("%a, %d %b %Y %H:%M:%S %Z", time.gmtime(fetch_time().tx_time)))
+		response.set_header('Date', "{} UTC".format(time.ctime(fetch_time().tx_time)))
 		if request.method != 'OPTIONS':
 			return fn(*args, **kwargs)
 	return _embed_date
@@ -49,11 +49,11 @@ def static_favicon():
 def get_ntphttp():
 	return response.get_header('Date')
 
-@route('/api/update')
+@route('/api')
 @enable_cors
 def get_delay():
 	data = {
-		"timestamp": "{} UTC".format(time.gmtime(fetch_time().tx_time)),
+		"timestamp": "{} UTC".format(time.ctime(fetch_time().tx_time)),
 		"offset": "{}s".format(format(fetch_time().offset, '.15f')),
 		"delay": "{}s".format(format(fetch_time().delay, '.15f'))
 	}
